@@ -46,28 +46,56 @@ def standalone_function(list1,list2):
     #loop is need but trying to avoid nested loops
     #condition
     #appending
-    new_list= []
-    item1 = 0
-    item2 = 0
-    while item1 < len(list1):
-        if list1[item1]<list2[item2]:
-            new_list.append(list1[item1])
-            item1 += 1
+    new_list = []
     
-    while item2 < len(list2):
-        if list2[item2]> list1[item1]:
-            new_list.append(list2[item2])
-            item2 += 1
     
-    return new_list
-    # for i in range(len(list1)):
-    #     for j in range(len(list2)):
-    #         if list1[i]<list2[j]:
-    #             new_list.append(list1[i])
-    #         new_list.append(list2[j])
+    # for item1,item2 in zip_function:
+        
+    #     new_list.append(item1)
+    #     new_list.append(item2)
     # return new_list
+    
+    
+    
+    # new_list= []
+    # i1 = 0
+    # i2 = 0
+    # while i1 < len(list1) and i2 < len(list2):
+    #     if list1[i1] < list2[i2]:
+    #         new_list.append(list1[i1])
+    #         new_list.append(list2[i2])
+    #         i1 += 1
+    #         i2 += 1
+    #     elif list2[i2] < list1[i1]:
+    #         new_list.append(list2[i2])
+    #         new_list.append(list1[i1])
+    #         i1 += 1
+    #         i2 += 1
+
+    # if len(list1) > len(list2):
+    #     new_list.extend(list1[i1:])
+    # else:
+    #     new_list.extend(list2[i2:])
+    # return new_list
+    
+    new_list= []
+    i1 = 0
+    i2 = 0
+    while i1 < len(list1) and i2 < len(list2):
+        if list1[i1] < list2[i2]:
+            new_list.append(list1[i1])
+            i1 += 1
+        elif list2[i2] < list1[i1]:
+            new_list.append(list2[i2])
+            i2 += 1
+    if len(list1) > len(list2):
+        new_list.extend(list1[i1:])
+    else:
+        new_list.extend(list2[i2:])
+    return new_list
 
 print(standalone_function([4,15,100],[10,20,30,40]))
+print(standalone_function([4,15,100,200,300],[10,20,30,40]))
     
 # TODO:Credit Card Validation (Bonus)
 # The Luhn formula is sometimes used to validate credit card numbers. 
@@ -80,3 +108,5 @@ print(standalone_function([4,15,100],[10,20,30,40]))
 # Add all numbers (not just our odds) together;
 # Now add the last digit back in – the sum should be a multiple of 10.
 # For example, when given digit array [5,2,2,8,2], after step 1) it becomes [5,2,2,8], then after step 2) it is [5,4,2,16]. Post-3) we have [5,4,2,7], then following 4) it becomes 18. After step 5) our value is 20, so ultimately we return true. If the final digit were any non-multiple-of-10, we would instead return false.
+
+# def is_credit_card_valid(digit_list):
